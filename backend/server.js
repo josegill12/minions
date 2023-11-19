@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const authRoutes = require("./controllers/authController");
-const tripsRoutes = require("./controllers/tripsController");
+const tripsController = require("./controllers/tripsController");
 const session = require('express-session');
 
 app.use(
@@ -20,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use(authRoutes);
-app.use(tripsRoutes);
+app.use("/trip", tripsController);
 
 app.get('/', (req, res) => {
     res.json({ message: "Finals suck" });
